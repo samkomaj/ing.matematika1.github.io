@@ -59,9 +59,12 @@ a:hover{
   width: 38%;
   padding: 20px;
 }*/
+body{
+  background-color: #000 !important;
+}
 .arrow-triangle {
   position: relative;
-  background-color: #606060;
+  background-color: #fff;
   text-align: left;
   margin: 1.2em;
 }
@@ -81,7 +84,7 @@ a:hover{
 .arrow-triangle:after {
   width:  2em;
   height: 2em;
-  border-top-right-radius: 30%;
+  border-top-right-radius: 60%;
 }
 
 .arrow-triangle.left {
@@ -112,7 +115,6 @@ body, html, p {
 
 }
 
-
 #disqus_thread {
 	display: none;
 }
@@ -123,8 +125,7 @@ body, html, p {
 #slide-number {
 	margin-left: 80px;
   margin-top: -35px;	
-	color: #000;	
-	font-family: "Times New Roman", Times, serif;
+	color: #fff;
 }
 
 .slideshow .steps > .step p {
@@ -154,26 +155,232 @@ body, html, p {
 
 .zadanie{
   width: 100%;
+  color: #fff;
 }
 .container {
   display: flex;
-  justify-content: space-between;
-  padding-left: 2%;
+  max-width: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-image: url(../../images/overlay.png), linear-gradient(45deg, #bd5d38 , #000 100%);
+  border-radius: 10px;
 }
 .graf{
-  width: 48%;
-  padding-left: 2%;
+  width: 50%;
+  padding-right: 2%;
+  text-align: right;
 }
 .riesenie{
-  width: 48%;
+  width: 50%;
   padding-left: 2%;
+  text-align: left;
 }
-.heading{
-  width: 100%;
-  background-color: #bd5d38;
-  padding-left: 2%;
+
+
+.sidenav {
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
-.header{
+
+.sidenav a {
+  padding: 5px 5px 20px 5px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+body {
+  margin:0;
+}
+
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, #bd5d38 0%, #555);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height:10vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex { /*Flexbox for containers*/
   display: flex;
-  border-bottom: 5px solid #606060;
+  justify-content: left;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:1vh;
+  margin-bottom:-10px; /*Fix for safari gap*/
+  min-height:30px;
+  max-height:30px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
+
+.column {
+  float: left;
+  width: 48%;
+  padding: 1%;
+  border-radius: 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  margin: 0 -5px;
+  max-width: 98%;
+  margin-left: 1%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .card {
+    height:1000px;
+  }
+  .sidenav {
+    height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #fff;
+}
+.card2 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.priklad{
+  border-radius: 10px;
+  max-width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+}
+.nadpis-priklad{
+  text-align: center;
+  padding: 2%;
+  color: #bd5d38;
+  font-size: 2.25rem;
+			line-height: 1.2;
 }
